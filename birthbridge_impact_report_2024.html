@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BirthBridge Africa — 2024 Impact Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FDFAF5;
+    --ink: #1A1208;
+    --brown: #3D2B1F;
+    --terracotta: #C4512A;
+    --gold: #D4A43A;
+    --sage: #5E7B5A;
+    --sky: #3A6B8A;
+    --red-alert: #B03020;
+    --light-sage: #EBF0E9;
+    --light-sky: #E8EFF4;
+    --border: rgba(61,43,31,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--brown);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.03) 60px,
+        rgba(255,255,255,0.03) 61px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.03) 60px,
+        rgba(255,255,255,0.03) 61px
+      );
+    pointer-events: none;
+  }
+
+  .cover-top {
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .org-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .cover-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+    max-width: 900px;
+  }
+
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.0;
+    margin-bottom: 1rem;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.65);
+    max-width: 520px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cover-stat {
+    border-left: 2px solid var(--terracotta);
+    padding-left: 1rem;
+  }
+
+  .cover-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cream);
+    display: block;
+  }
+
+  .cover-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+  }
+
+  .cover-bottom {
+    padding: 2rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 3rem;
+  }
+
+  .cover-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(245,240,232,0.3);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(245,240,232,0.3));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.1); }
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--terracotta);
+    letter-spacing: 0.15em;
+    padding-top: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--brown);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* ── EXECUTIVE SUMMARY ── */
+  .exec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .exec-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+  }
+
+  .exec-card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--terracotta);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .exec-card-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--brown);
+    margin-bottom: 1rem;
+  }
+
+  .exec-card-body {
+    font-size: 0.88rem;
+    color: rgba(26,18,8,0.65);
+    line-height: 1.7;
+  }
+
+  /* ── BIG NUMBERS ── */
+  .big-number-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .big-num-card {
+    text-align: left;
+  }
+
+  .big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 900;
+    color: var(--brown);
+    line-height: 1;
+    display: block;
+  }
+
+  .big-num.highlight { color: var(--terracotta); }
+  .big-num.positive { color: var(--sage); }
+
+  .big-num-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: rgba(26,18,8,0.5);
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  .big-num-bar {
+    height: 3px;
+    margin-top: 0.8rem;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .big-num-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── NARRATIVE BLOCKS ── */
+  .narrative {
+    font-size: 1.05rem;
+    color: rgba(26,18,8,0.75);
+    line-height: 1.85;
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+
+  .narrative strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .pull-quote {
+    border-left: 4px solid var(--terracotta);
+    padding: 1.5rem 2rem;
+    background: var(--warm-white);
+    margin: 2rem 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1.5;
+  }
+
+  /* ── STATE COMPARISON ── */
+  .state-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
+  }
+
+  .state-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26,18,8,0.45);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  .state-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .state-table tr:last-child td { border-bottom: none; }
+
+  .state-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brown);
+  }
+
+  .bar-cell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mini-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .mini-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bar-kano { background: var(--sage); }
+  .bar-kaduna { background: var(--sky); }
+  .bar-sokoto { background: var(--terracotta); }
+
+  .pct-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink);
+    min-width: 3rem;
+    text-align: right;
+  }
+
+  /* ── ALERT CARD ── */
+  .alert-card {
+    background: #FDF3F0;
+    border: 1px solid rgba(180,48,32,0.2);
+    border-left: 4px solid var(--red-alert);
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+  }
+
+  .alert-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red-alert);
+    margin-bottom: 0.5rem;
+  }
+
+  .alert-card-text {
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--brown);
+  }
+
+  /* ── FUNNEL ── */
+  .funnel-wrap {
+    margin: 2.5rem 0;
+  }
+
+  .funnel-step {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .funnel-label {
+    font-size: 0.82rem;
+    color: rgba(26,18,8,0.65);
+    text-align: right;
+  }
+
+  .funnel-track {
+    height: 36px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .funnel-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: white;
+    font-weight: 500;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .funnel-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink);
+    min-width: 3.5rem;
+    text-align: right;
+  }
+
+  /* ── RECOMMENDATIONS ── */
+  .recs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .rec-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 2rem;
+  }
+
+  .rec-priority {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .priority-high { color: var(--red-alert); }
+  .priority-medium { color: var(--gold); }
+
+  .rec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .rec-body {
+    font-size: 0.84rem;
+    color: rgba(26,18,8,0.65);
+    line-height: 1.7;
+  }
+
+  .rec-metric {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(26,18,8,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    background: var(--brown);
+    padding: 4rem 3rem;
+    color: rgba(245,240,232,0.45);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-org {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-note {
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .footer-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-list {
+    list-style: none;
+    font-size: 0.8rem;
+    line-height: 2;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+
+  /* ── INLINE HIGHLIGHT ── */
+  .highlight-box {
+    background: var(--light-sage);
+    border-left: 3px solid var(--sage);
+    padding: 1.25rem 1.75rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: var(--brown);
+    line-height: 1.7;
+  }
+
+  .inline-stat {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--terracotta);
+  }
+
+  /* ── TRIMESTER VIZ ── */
+  .donut-row {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .donut-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .donut-wrap svg {
+    transform: rotate(-90deg);
+  }
+
+  .donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .donut-center-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--brown);
+    display: block;
+    line-height: 1;
+  }
+
+  .donut-center-label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(26,18,8,0.45);
+  }
+
+  .donut-legend {
+    flex: 1;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(26,18,8,0.7);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink);
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 4rem 1.5rem; }
+    .cover-main { padding: 3rem 1.5rem; }
+    .exec-grid { grid-template-columns: 1fr; }
+    .big-number-row { grid-template-columns: 1fr 1fr; }
+    .recs-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .funnel-step { grid-template-columns: 140px 1fr auto; }
+    .cover-stats { gap: 2rem; }
+    .state-table { font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COVER ═══════════════ -->
+<section class="cover">
+  <div class="cover-top">
+    <span class="org-badge">BirthBridge Africa</span>
+    <span class="org-badge" style="color:rgba(245,240,232,0.3)">Annual Impact Report</span>
+  </div>
+
+  <div class="cover-main">
+    <p class="cover-eyebrow">January — December 2024 · Northern Nigeria</p>
+    <h1 class="cover-title">From <em>Registers</em><br>to Results</h1>
+    <p class="cover-subtitle">A data story on what BirthBridge achieved, what the numbers reveal, and what comes next for maternal and newborn health across Kano, Kaduna, and Sokoto.</p>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="cover-stat-num">4,100</span>
+        <span class="cover-stat-label">Pregnancies enrolled</span>
+      </div>
+      <div class="cover-stat">
+        <span class="cover-stat-num">140</span>
+        <span class="cover-stat-label">Community health workers</span>
+      </div>
+      <div class="cover-stat">
+        <span class="cover-stat-num">73</span>
+        <span class="cover-stat-label">Communities reached</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <span class="cover-meta">Prepared by: Anthony Okeibuno — Health Data Systems Strategist</span>
+    <span class="cover-meta">Data period: 01 Jan – 31 Dec 2024</span>
+    <span class="cover-meta">Version: Final</span>
+  </div>
+
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ═══════════════ EXEC SUMMARY ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <h2 class="section-title">Executive <em>Summary</em></h2>
+  </div>
+
+  <div class="exec-grid">
+    <div class="exec-card fade-in stagger-1">
+      <div class="exec-card-num">Finding 01</div>
+      <div class="exec-card-headline">BirthBridge is reaching women — but not early enough</div>
+      <div class="exec-card-body">Only 26.4% of enrolled women joined the program in their first trimester. Most arrivals (62.9%) came in the second trimester, leaving insufficient time to deliver the full ANC protocol and limiting the program's protective potential.</div>
+    </div>
+    <div class="exec-card fade-in stagger-2">
+      <div class="exec-card-num">Finding 02</div>
+      <div class="exec-card-headline">Sokoto is a program within a program — and it needs urgent attention</div>
+      <div class="exec-card-body">Sokoto's skilled birth attendance rate stands at 24.7%, compared to 67.9% in Kano. The 43-percentage-point gap cannot be attributed to program design alone — it points to structural barriers that require a targeted, state-specific response strategy.</div>
+    </div>
+    <div class="exec-card fade-in stagger-3">
+      <div class="exec-card-num">Finding 03</div>
+      <div class="exec-card-headline">Referrals are being issued, but not always followed through</div>
+      <div class="exec-card-body">64.7% of women were referred for facility delivery — a strong CHW effort — but only 72.2% of those referrals converted to actual attendance. Nearly 1 in 4 referred women delivered without skilled care. Understanding this dropout is the single highest-leverage question in the 2025 program cycle.</div>
+    </div>
+  </div>
+
+  <p class="narrative">BirthBridge's 2024 program reached <strong>4,100 women</strong> across 73 communities in Kano, Kaduna, and Sokoto. Community health workers made substantial strides in service delivery — the program's overall ANC4+ completion rate of 57.2% outpaces the national average. Yet the data also surfaces inequities and gaps that, left unaddressed, will constrain impact and donor confidence. This report tells both sides of that story.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ WHO WE REACHED ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <h2 class="section-title">Who We <em>Reached</em></h2>
+  </div>
+
+  <div class="big-number-row">
+    <div class="big-num-card fade-in stagger-1">
+      <span class="big-num">4,100</span>
+      <span class="big-num-label">Total pregnancies enrolled</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--sage)" data-target="82"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-2">
+      <span class="big-num">73</span>
+      <span class="big-num-label">Communities reached</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--sky)" data-target="73"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-3">
+      <span class="big-num">140</span>
+      <span class="big-num-label">Active CHWs</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--gold)" data-target="100"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-4">
+      <span class="big-num highlight">18.2%</span>
+      <span class="big-num-label">Repeat client rate</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--terracotta)" data-target="18.2"></div></div>
+    </div>
+  </div>
+
+  <p class="narrative">The program enrolled women from across all three states, with Kano contributing the highest volume (<strong>1,800 pregnancies</strong>), followed by Kaduna (1,400) and Sokoto (900). The <strong>18.2% repeat client rate</strong> — nearly 1 in 5 enrolled women — is an encouraging signal of community trust and sustained program presence. These are women who experienced BirthBridge once and returned for a subsequent pregnancy.</p>
+
+  <div class="pull-quote">
+    "Only 1 in 4 women joined BirthBridge before her third month of pregnancy. By the time most women enrolled, precious windows for early intervention had already closed."
+  </div>
+
+  <div class="donut-row">
+    <div class="donut-wrap">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#E8E0D0" stroke-width="20"/>
+        <!-- First: 26.4% → 100.5 of 377 circumference -->
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#C4512A" stroke-width="20"
+          stroke-dasharray="99.6 277.4" stroke-dashoffset="0"/>
+        <!-- Second: 62.9% → ~237.3 of 377 -->
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#3A6B8A" stroke-width="20"
+          stroke-dasharray="237.3 139.7" stroke-dashoffset="-99.6"/>
+        <!-- Third: 9.1% → ~34.3 of 377 -->
+        <circle cx="80" cy="80" r="60" fill="none" stroke="#D4A43A" stroke-width="20"
+          stroke-dasharray="34.3 342.7" stroke-dashoffset="-336.9"/>
+      </svg>
+      <div class="donut-center">
+        <span class="donut-center-num">3</span>
+        <span class="donut-center-label">Trimesters</span>
+      </div>
+    </div>
+    <div class="donut-legend">
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--terracotta)"></span>
+        First trimester enrollment
+        <span class="legend-pct">26.4%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--sky)"></span>
+        Second trimester enrollment
+        <span class="legend-pct">62.9%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--gold)"></span>
+        Third trimester enrollment
+        <span class="legend-pct">9.1%</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--border)"></span>
+        Data missing
+        <span class="legend-pct">5.5%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The WHO recommends initiating antenatal care before 12 weeks. BirthBridge's first-trimester enrollment rate of <span class="inline-stat">26.4%</span> reflects the difficulty of early detection in low-resource community settings — but also signals an opportunity. Programs that systematically improve community mobilization prior to conception or in early pregnancy typically see first-trimester rates climb to 40–50%.
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ WHAT WE DELIVERED ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2 class="section-title">What We <em>Delivered</em></h2>
+  </div>
+
+  <div class="big-number-row">
+    <div class="big-num-card fade-in stagger-1">
+      <span class="big-num positive">57.2%</span>
+      <span class="big-num-label">ANC4+ completion rate</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--sage)" data-target="57.2"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-2">
+      <span class="big-num">3.28</span>
+      <span class="big-num-label">Avg ANC visits per woman</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--sky)" data-target="65.6"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-3">
+      <span class="big-num">67.9%</span>
+      <span class="big-num-label">Danger sign counseling</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--gold)" data-target="67.9"></div></div>
+    </div>
+    <div class="big-num-card fade-in stagger-4">
+      <span class="big-num">64.7%</span>
+      <span class="big-num-label">Delivery referral rate</span>
+      <div class="big-num-bar"><div class="big-num-fill" style="width:0%;background:var(--terracotta)" data-target="64.7"></div></div>
+    </div>
+  </div>
+
+  <p class="narrative">The program's core service delivery indicators tell a story of real effort and meaningful output. A <strong>57.2% ANC4+ completion rate</strong> — meaning more than half of enrolled women attended the minimum four antenatal contacts recommended by WHO — represents genuine progress in a context where the national average hovers around 45–50%. Danger sign counseling, an often-overlooked educational intervention, reached 67.9% of enrolled women, equipping them with knowledge that can save lives in the absence of immediate clinical care.</p>
+
+  <p class="narrative">CHW visit adherence — the proportion of scheduled visits that were actually completed — averaged <strong>63%</strong>, with Kano (75.3%) substantially outperforming Sokoto (42.6%). This operational gap is not incidental; it maps directly onto the outcome disparities explored in the next section.</p>
+
+  <div class="alert-card">
+    <div class="alert-card-label">⚠ Data Quality Signal</div>
+    <div class="alert-card-text">Overall data completeness stands at <strong>80%</strong>, but Sokoto forms recorded only 60.8% completeness — meaning roughly 4 in 10 data fields submitted from Sokoto were blank or inconsistent. This figure almost certainly means that Sokoto's outcomes are <em>underrepresented</em> in this analysis. Poor data quality is not just an M&E problem: it is a program management problem that limits the organization's ability to detect and respond to crises in its lowest-performing geography.</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ WHAT CHANGED ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">04 —</span>
+    <h2 class="section-title">What <em>Changed</em></h2>
+  </div>
+
+  <p class="narrative">Service delivery metrics measure what CHWs did. Outcome metrics measure whether it worked. The pathway from enrollment to safe delivery involves multiple steps, and attrition at each step compounds. The funnel below traces a cohort of 100 enrolled women through to neonatal follow-up — making visible where women are being lost, and why it matters.</p>
+
+  <div class="funnel-wrap">
+    <div class="funnel-step">
+      <span class="funnel-label">Enrolled in program</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--sage)" data-target="100">100%</div>
+      </div>
+      <span class="funnel-pct">100%</span>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-label">ANC4+ achieved</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--sage)" data-target="57.2">57.2%</div>
+      </div>
+      <span class="funnel-pct">57.2%</span>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-label">Referred for delivery</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--sky)" data-target="64.7">64.7%</div>
+      </div>
+      <span class="funnel-pct">64.7%</span>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-label">Skilled birth attendance</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--sky)" data-target="51.3">51.3%</div>
+      </div>
+      <span class="funnel-pct">51.3%</span>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-label">PNC within 48 hours</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--gold)" data-target="52.3">52.3%</div>
+      </div>
+      <span class="funnel-pct">52.3%</span>
+    </div>
+    <div class="funnel-step">
+      <span class="funnel-label">Neonatal follow-up complete</span>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:0%;background:var(--terracotta)" data-target="22.6">22.6%</div>
+      </div>
+      <span class="funnel-pct">22.6%</span>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    "Of every 100 women who enrolled in BirthBridge, only 23 reached the end of the full newborn follow-up protocol. That is a program that saves lives — and a system that leaves too many behind."
+  </div>
+
+  <p class="narrative">The most severe attrition point in the care continuum is the transition from delivery to neonatal follow-up. While skilled birth attendance and PNC rates hold at roughly 50%, neonatal follow-up completion — requiring CHW visits on Day 1, Day 3, and Day 7 — drops to just <strong>22.6%</strong>. The causes are likely multiple: CHW workload, distance, poor postnatal scheduling systems, and mothers' mobility after delivery. This is an area warranting dedicated program design attention in the next cycle.</p>
+
+  <div class="highlight-box">
+    <strong>The referral gap:</strong> 64.7% of women were referred for delivery. Of those referred, 72.2% actually attended a facility. This means approximately <span class="inline-stat">1,200 women</span> received a referral in 2024 that they did not act on — and delivered without skilled care. Understanding <em>why</em> (cost, distance, family decision-making, distrust of facilities) should be a research priority before 2025 programming is finalized.
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ STATE COMPARISON ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">05 —</span>
+    <h2 class="section-title">Where We're <em>Strongest</em> — and Where We're Not</h2>
+  </div>
+
+  <p class="narrative">Aggregate figures can mask the most important story in the data. When results are disaggregated by state, BirthBridge reveals itself to be not one program, but three — with dramatically different performance profiles across Kano, Kaduna, and Sokoto.</p>
+
+  <table class="state-table">
+    <thead>
+      <tr>
+        <th>State</th>
+        <th>Enrolled</th>
+        <th>ANC4+ Rate</th>
+        <th>Skilled Birth Attendance</th>
+        <th>Visit Adherence</th>
+        <th>Data Completeness</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="state-name">Kano</span></td>
+        <td>1,800</td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kano" style="width:71.8%"></div></div>
+            <span class="pct-label">71.8%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kano" style="width:67.9%"></div></div>
+            <span class="pct-label">67.9%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kano" style="width:75.3%"></div></div>
+            <span class="pct-label">75.3%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kano" style="width:92.1%"></div></div>
+            <span class="pct-label">92.1%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="state-name">Kaduna</span></td>
+        <td>1,400</td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kaduna" style="width:53.8%"></div></div>
+            <span class="pct-label">53.8%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kaduna" style="width:46.6%"></div></div>
+            <span class="pct-label">46.6%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kaduna" style="width:60.3%"></div></div>
+            <span class="pct-label">60.3%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-kaduna" style="width:76.7%"></div></div>
+            <span class="pct-label">76.7%</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="state-name">Sokoto</span></td>
+        <td>900</td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-sokoto" style="width:33.4%"></div></div>
+            <span class="pct-label">33.4%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-sokoto" style="width:24.7%"></div></div>
+            <span class="pct-label">24.7%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-sokoto" style="width:42.6%"></div></div>
+            <span class="pct-label">42.6%</span>
+          </div>
+        </td>
+        <td>
+          <div class="bar-cell">
+            <div class="mini-bar-wrap"><div class="mini-bar bar-sokoto" style="width:60.8%"></div></div>
+            <span class="pct-label">60.8%</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="narrative">The Kano-Sokoto gap is the defining story of BirthBridge's 2024 data. At <strong>24.7% skilled birth attendance</strong>, Sokoto is performing at roughly one-third the level of Kano — despite operating under the same program model, the same CHW training curriculum, and the same M&E framework. This divergence signals that contextual and structural factors — facility availability, road infrastructure, cultural norms around male involvement in birth decisions, CHW supervision quality — are driving outcomes more than program design. Sokoto needs a contextually tailored response, not simply more of the same.</p>
+
+  <p class="narrative">Kaduna sits in a troubling middle position: its indicators are moderate, but the trend direction matters. Without specific investment, Kaduna may drift closer to Sokoto than Kano. Its visit adherence rate of 60.3% and data completeness of 76.7% suggest a program that is functioning, but under strain.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ RECOMMENDATIONS ═══════════════ -->
+<section class="section fade-in">
+  <div class="section-header">
+    <span class="section-num">06 —</span>
+    <h2 class="section-title">What the Data Tells Us <em>to Do Next</em></h2>
+  </div>
+
+  <p class="narrative">The following recommendations are rooted directly in the 2024 program data. They are not generic best practices — they respond to specific gaps and performance patterns observed in BirthBridge's own results. Priority level reflects both magnitude of impact and feasibility within the existing program structure.</p>
+
+  <div class="recs-grid">
+    <div class="rec-card fade-in stagger-1">
+      <div class="rec-priority priority-high">▲ High Priority</div>
+      <div class="rec-title">Launch a Sokoto-Specific Program Recovery Plan</div>
+      <div class="rec-body">Treat Sokoto as a distinct program context requiring tailored strategy. Commission a rapid qualitative assessment to identify barriers to facility delivery and CHW visit follow-through. Consider deploying a dedicated state mentor, revising CHW incentive structures, and introducing community-level demand generation through women's groups. Data systems must be rebuilt here before outcomes can be reliably measured.</div>
+      <div class="rec-metric">Based on: 24.7% SBA rate · 42.6% visit adherence · 60.8% data completeness</div>
+    </div>
+
+    <div class="rec-card fade-in stagger-2">
+      <div class="rec-priority priority-high">▲ High Priority</div>
+      <div class="rec-title">Investigate and Address the Referral-Attendance Gap</div>
+      <div class="rec-body">~1,200 referrals issued in 2024 did not result in facility attendance. Before issuing more referrals in 2025, BirthBridge must understand why. A structured exit survey or community dialogue with referred women who did not attend will surface whether barriers are financial (transport, facility fees), social (husband/family opposition), or logistical (facility quality, distance). The findings should directly reshape how CHWs discuss and coordinate referrals.</div>
+      <div class="rec-metric">Based on: 64.7% referral rate · 72.2% referral-to-attendance conversion</div>
+    </div>
+
+    <div class="rec-card fade-in stagger-3">
+      <div class="rec-priority priority-medium">● Medium Priority</div>
+      <div class="rec-title">Redesign the Postnatal Care Protocol to Protect Newborns</div>
+      <div class="rec-body">With only 22.6% of newborns receiving all three follow-up visits (Day 1, Day 3, Day 7), the program's postnatal care chain is fragile. Solutions likely include: scheduling postnatal visits at the time of enrollment (not delivery), assigning a specific CHW responsible for each newborn's first week, and introducing a simple SMS or paper-based alert system to flag missed visits within 24 hours of the expected contact.</div>
+      <div class="rec-metric">Based on: 52.3% PNC-48hr rate · 22.6% neonatal follow-up completion</div>
+    </div>
+
+    <div class="rec-card fade-in stagger-4">
+      <div class="rec-priority priority-medium">● Medium Priority</div>
+      <div class="rec-title">Build a Community Mobilization Strategy for Earlier Enrollment</div>
+      <div class="rec-body">Only 26.4% of women enrolled before their second trimester. Late enrollment is both a program quality issue and a missed opportunity — earlier enrollment directly enables higher ANC completion rates. Strategies to test include: community pregnancy detection networks, training traditional birth attendants and community leaders as referral agents, and partnering with religious leaders who are trusted messengers in first-trimester health decisions in these geographies.</div>
+      <div class="rec-metric">Based on: 26.4% first-trimester enrollment · avg gestational age at enrollment: 18 weeks</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="report-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-org">BirthBridge Africa</div>
+      <p class="footer-note">This impact report was prepared by Anthony Okeibuno, Health Data Systems Strategist. All analysis is based on program data submitted by state coordinators covering the January–December 2024 program year. Data from 4,100 enrollment records across Kano, Kaduna, and Sokoto states was used. A separate methodology note detailing data cleaning decisions, metric definitions, and analytical assumptions is available on request.</p>
+    </div>
+    <div>
+      <div class="footer-label">Report Sections</div>
+      <ul class="footer-list">
+        <li>01 · Executive Summary</li>
+        <li>02 · Who We Reached</li>
+        <li>03 · What We Delivered</li>
+        <li>04 · What Changed</li>
+        <li>05 · State Comparison</li>
+        <li>06 · Recommendations</li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-label">Data Coverage</div>
+      <ul class="footer-list">
+        <li>4,100 pregnancies</li>
+        <li>3 states</li>
+        <li>73 communities</li>
+        <li>140 CHWs</li>
+        <li>26 indicators</li>
+        <li>Jan–Dec 2024</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Intersection Observer for fade-in ──
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        // Animate bars when visible
+        el.target.querySelectorAll('[data-target]').forEach(bar => {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.target + '%';
+          }, 200);
+        });
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  faders.forEach(el => observer.observe(el));
+
+  // Animate funnel when in view
+  const funnelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.funnel-fill').forEach((fill, i) => {
+          setTimeout(() => {
+            const target = fill.dataset.target;
+            fill.style.width = target + '%';
+          }, i * 150);
+        });
+        funnelObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.funnel-wrap').forEach(el => funnelObserver.observe(el));
+</script>
+</body>
+</html>
